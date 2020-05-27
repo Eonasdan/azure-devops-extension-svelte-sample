@@ -1,0 +1,58 @@
+{
+  "manifestVersion": 1,
+  "version": "1.0.13",
+  "name": "ADO Extension",
+  "description": "A short description of my extension",
+  "publisher": "Adwelean",
+  "demands": ["api-version/3.0"],
+  "categories": ["Azure Repos"],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "scopes": [
+    "vso.code_full"
+  ],
+  "content": {
+    "details": {
+      "path": "README.md"
+    }
+  },
+  "icons": {
+    "default": "static/world.png"
+  },
+  "files": [
+    {
+      "path": "dist",
+      "addressable": true
+    },
+    {
+      "path": "static",
+      "addressable": true
+    }
+  ],
+  "contributions": [
+    {
+      "id": "hello-world-hub-group",
+      "type": "ms.vss-web.hub-group",
+      "description": "Sample hub group",
+      "targets": ["ms.vss-web.project-hub-groups-collection"],
+      "properties": {
+        "name": "Hello World!",
+        "icon": {
+          "dark": "img/world.png",
+          "light": "img/world.png"
+        }
+      }
+    },
+    {
+      "id": "default-hub",
+      "type": "ms.vss-web.hub",
+      "targets": [".hello-world-hub-group"],
+      "properties": {
+        "uri": "dist/index.html"
+      }
+    }
+  ]
+}

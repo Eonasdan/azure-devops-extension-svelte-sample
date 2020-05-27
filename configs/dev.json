@@ -1,0 +1,6 @@
+{
+    "id": "my-extension-dev",
+    "public": false,
+    "baseUri": "https://localhost:3000"
+  }
+  
