@@ -1,91 +1,91 @@
 # AzureDevOps Extension
 
-Ce projet utilise le framework [Svelte](https://svelte.dev).
+This project uses the [Svelte] framework (https://svelte.dev).
 
 
-*Note: vous avez besoin de [Node.js](https://nodejs.org) d'installé.*
+* Note: you need [Node.js] (https://nodejs.org) installed. *
 
 
-## Débuter
+## Start
 
-Installation des dépendances...
+Installation of dependencies ...
 
-```bash
-cd mon-extension-ado
+`` bash
+cd my-teen-extension
 npm install
-```
+`` ``
 
-...puis démarrer le serveur webpack:
+... then start the webpack server:
 
-```bash
-npm run start:dev
-```
+`` bash
+npm run start: dev
+`` ``
 
-L'extension est lancée sur [localhost:3000](http://localhost:3000). Vous devriez alors voir votre application fonctionner. Éditez un fichier de composant dans `src`, enregistrez-le et la page devrait se recharger avec vos modifications (hot reload).
+The extension is started at [localhost: 3000] (http: // localhost: 3000). You should then see your application running. Edit a component file in `src`, save it, and the page should reload with your changes (hot reload).
 
 
 ## Configuration
 
-Dans `src/App.svetle`, changer les variables `projectName` et `repoName` pour correspondre avec votre projet.
+In `src / App.svetle`, change the` projectName` and `repoName` variables to match your project.
 
 
-## Packager l'extension
+## Pack the extension
 
-```bash
+`` bash
 npm run package
-```
+`` ``
 
-*Note: ne pas oublier de mettre à jour la version du package dans `vss-extension.json`.*
+* Note: don't forget to update the package version in `vss-extension.json`. *
 
-## Publier le package
+## Publish the package
 
-Vous aurez besoin d'un PAT (Personal Access Token) pour utiliser le publish.
+You will need a PAT (Personal Access Token) to use the publish.
 
 
-```bash
+`` bash
 npm run publish
-```
+`` ``
 
-## Informations
+## Information
 
-Pour utiliser les api's du framework `azure-devops-extension-api`, il est nécessaire d'avoir les droits suffisants voir [Scopes](https://docs.microsoft.com/en-us/azure/devops/extend/develop/manifest?view=azure-devops#scopes).
+To use the api's of the `azure-devops-extension-api` framework, it is necessary to have sufficient rights see [Scopes] (https://docs.microsoft.com/en-us/azure/devops/extend/ develop / manifest? view = azure-devops # scopes).
 
-Pour la démo, l'extension va chercher les commits d'un repo Azure DevOps, elle a donc besoin de l'autorisation permettant d'intérroger Azure Repos, il faut alors modifier le scope de l'extension, pour la démo on utilisera le scope suivant `vso.code_full` (pour une application de production, prendre le ou les plus restrictifs selon vos besoins bien entendu) cette propriété `scope` est à définir dans le fichier `vss-extension.json`.
+For the demo, the extension will look for the commits of an Azure DevOps repo, it therefore needs the authorization to query Azure Repos, it is then necessary to modify the scope of the extension, for the demo we will use the scope according to `vso.code_full` (for a production application, take the most restrictive (s) according to your needs of course) this` scope` property is to be defined in the `vss-extension.json` file.
 
-Lorsque vous modifier les scopes et si le package a déjà été publié au préalable, il vous faut valider les nouvelles autorisations dans `Organization settings/Extensions`, sans quoi vous aurez des erreurs de type CORS.
+When you modify the scopes and if the package has already been published beforehand, you must validate the new authorizations in `Organization settings / Extensions`, otherwise you will have CORS type errors.
 
 
 ## Debug
 
-Pour utiliser le mode debug il vous faut packager (et publier à la main) ou publier l'application en mode dev.
+To use debug mode you need to package (and publish by hand) or publish the application in dev mode.
 
-```bash
-npm run package:dev
-```
+`` bash
+npm run package: dev
+`` ``
 
-ou
+or
 
-```bash
-npm run publish:dev
-```
+`` bash
+npm run publish: dev
+`` ``
 
-*Note: il n'est pas possible de publier le package `dev` sur le package `release`.*
+* Note: it is not possible to publish the `dev` package over the` release` package. *
 
-*Solution de contournement: modifier la propriété `name` du fichier `vss-extension.json` pour chaque changement de mode de publication (dev ou release) pour pouvoir faire cohabiter les deux extensions sur Azure DevOps*
+* Workaround: modify the `name` property of the` vss-extension.json` file for each change of publication mode (dev or release) to be able to have the two extensions coexist on Azure DevOps *
 
-Une fois l'application installée sur Azure DevOps et en mode `dev`, si vous naviguez sur celle-ci vous aurez une icône de chargement qui tourne indéfiniment, car en mode `dev` (voir le fichier `configs\dev.json`), le navigateur redirige tout les appels réseau vers l'url définie par la propriété `basePath` à savoir "https://localhost:3000", *c'est magique dis donc c'est celle de mon serveur local ! :laughing:*
+Once the application is installed on Azure DevOps and in `dev` mode, if you navigate on it you will have a loading icon that runs indefinitely, because in` dev` mode (see the `configs \ dev.json` file ), the browser redirects all network calls to the url defined by the `basePath` property, namely" https: // localhost: 3000 ", * it's magic, so it's that of my local server! : laughing: *
 
-Vous l'aurez alors compris en lançant votre serveur local vous pourrez alors debuguer votre application. 
+You will then have understood it by launching your local server, you will then be able to debug your application.
 
-C'est parti, on lance la commande:
+Here we go, we run the command:
 
-```bash
-npm run start:dev-ado
-```
+`` bash
+npm run start: dev-ado
+`` ``
 
-Votre extension s'affiche désormais dans Azure DevOps, vous pouvez alors modifier vos fichiers en local et apprécier la puissance du hot reload :blush:
+Your extension is now displayed in Azure DevOps, so you can edit your files locally and enjoy the power of hot reload: blush:
 
-*Info tech: afin que le navigateur puisse résoudre les fichiers de votre extension (dossier dist), la commande `npm run start:dev-ado` lance le serveur webpack dans un mode permettant de servir vos fichiers à partir du dossier `/dist` plutôt qu'en mémoire*
+* Tech Info: so that the browser can resolve your extension files (dist folder), the command `npm run start: dev-ado` starts the webpack server in a mode that allows you to serve your files from the` / dist folder `rather than in memory *
 
 
-Enjoy !
+Enjoy!
